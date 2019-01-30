@@ -1,0 +1,12 @@
+query selectElectionByBallotKey {
+  description: "Select election which has the provided ballotkey"
+  statement:
+      SELECT org.bitpoll.net.Election
+          WHERE (ballotKey CONTAINS _$ballotKey)
+}
+query selectElectionByusedballotKey{
+  description: "Select an election by specifying a used ballot"
+  statement:
+      SELECT org.bitpoll.net.Election
+      WHERE (usedballotKey CONTAINS _$usedballotKey)
+}
