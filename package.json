@@ -32,5 +32,8 @@
     "nyc": "latest",
     "mkdirp": "latest",
     "mocha": "latest"
+  },
+  "dependencies": {
+    "passport-github": "^1.1.0"
   }
 }

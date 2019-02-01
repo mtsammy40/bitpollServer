@@ -32,7 +32,7 @@ participant Voter identified by voterId {
 participant Institution identified by institutionId{
   o String institutionId
   o String name
-  --> Election[] hist
+  --> Election[] hist optional
 }
 
 participant Candidate identified by candidateId {
