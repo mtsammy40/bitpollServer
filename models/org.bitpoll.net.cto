@@ -18,20 +18,26 @@
 
 namespace org.bitpoll.net
 
-participant Voter identified by voterId {
-  o String voterId
+participant Voter identified by email {
+  o String email
   o String name
   o String gender
   o String dob
   o String nationality
-  o String secret
-  --> Election[] Hist
-  --> Institution[] institution
+  o String county
+  o String occupation
+  o String secret optional
+  o String dp 
+  --> Election[] hist optional
+  --> Institution[] institution optional
 }
 
-participant Institution identified by institutionId{
-  o String institutionId
+participant Institution identified by email{
+  o String email
   o String name
+  o String description
+  o String netdomain
+  o String personnelEmail 
   --> Election[] hist optional
 }
 
@@ -43,6 +49,8 @@ participant Candidate identified by candidateId {
 asset Election identified by electionId{
   o String electionId
   o String motion
+  o DateTime start
+  o DateTime end
   o String[] ballotKey
   o String[] usedballotKey
   --> Candidate[] candidates
@@ -60,4 +68,6 @@ transaction CreateElection{
   o String motion
   o String[] candidateNames
   o Integer ballotNo
+  o DateTime start
+  o DateTime end  
 }
