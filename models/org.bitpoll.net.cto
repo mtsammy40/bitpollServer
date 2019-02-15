@@ -56,7 +56,7 @@ asset Election identified by electionId{
   --> Candidate[] candidates
   --> Institution institution
 }
-
+@returns(String)
 transaction Voting {
   --> Election election
   --> Candidate candidate
@@ -70,4 +70,18 @@ transaction CreateElection{
   o Integer ballotNo
   o DateTime start
   o DateTime end  
+}
+
+event NewElection {
+  o String motion
+  o DateTime start
+  o DateTime end
+  --> Election election
+  --> Institution institution
+}
+
+event NewVote {
+  --> Candidate candidate
+  --> Election election
+  o Integer count
 }

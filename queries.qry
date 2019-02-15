@@ -10,3 +10,10 @@ query selectElectionByusedballotKey{
       SELECT org.bitpoll.net.Election
       WHERE (usedballotKey CONTAINS _$usedballotKey)
 }
+query selectCandidatesByElection {
+  description: "Select the candidates of an election"
+  statement: 
+      SELECT org.bitpoll.net.Candidate
+      WHERE (candidateId == _$candidateId)
+
+}
