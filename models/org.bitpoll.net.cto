@@ -18,7 +18,8 @@
 
 namespace org.bitpoll.net
 
-participant Voter identified by email {
+participant Admin identified by id {
+  o String id
   o String email
   o String name
   o String gender
@@ -27,23 +28,16 @@ participant Voter identified by email {
   o String county
   o String occupation
   o String secret optional
+  o String phoneNo
   o String dp 
-  --> Election[] hist optional
-  --> Institution[] institution optional
-}
-
-participant Institution identified by email{
-  o String email
-  o String name
-  o String description
-  o String netdomain
-  o String personnelEmail 
   --> Election[] hist optional
 }
 
 participant Candidate identified by candidateId {
   o String candidateId
   o String name
+  o String party optional
+  o String picture optional
   o Integer count
 }
 asset Election identified by electionId{
@@ -54,7 +48,7 @@ asset Election identified by electionId{
   o String[] ballotKey
   o String[] usedballotKey
   --> Candidate[] candidates
-  --> Institution institution
+  --> Admin admin
 }
 @returns(String)
 transaction Voting {
@@ -64,12 +58,12 @@ transaction Voting {
 }
 
 transaction CreateElection{
-  --> Institution institution
   o String motion
   o String[] candidateNames
   o Integer ballotNo
   o DateTime start
-  o DateTime end  
+  o DateTime end
+  --> Admin admin 
 }
 
 event NewElection {
@@ -77,7 +71,7 @@ event NewElection {
   o DateTime start
   o DateTime end
   --> Election election
-  --> Institution institution
+  --> Admin admin
 }
 
 event NewVote {
