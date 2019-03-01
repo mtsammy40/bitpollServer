@@ -70,6 +70,25 @@ transaction CreateElection{
   --> Admin admin 
 }
 
+transaction CreateAdminy{
+  o String id
+  o String email
+  o String name
+  o String gender
+  o String dob
+  o String nationality
+  o String county
+  o String phoneNo
+  o String dp optional
+}
+
+transaction CreateRegulator{
+  o String id
+  o String name
+  o String email
+  o String address
+}
+
 event NewElection {
   o String motion
   o DateTime start
