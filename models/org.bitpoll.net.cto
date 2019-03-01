@@ -26,11 +26,15 @@ participant Admin identified by id {
   o String dob
   o String nationality
   o String county
-  o String occupation
-  o String secret optional
   o String phoneNo
-  o String dp 
+  o String dp optional
   --> Election[] hist optional
+}
+participant Regulator identified by id {
+  o String id
+  o String name
+  o String email
+  o String address
 }
 
 participant Candidate identified by candidateId {
@@ -47,6 +51,7 @@ asset Election identified by electionId{
   o DateTime end
   o String[] ballotKey
   o String[] usedballotKey
+  o String picture optional
   --> Candidate[] candidates
   --> Admin admin
 }
@@ -56,7 +61,6 @@ transaction Voting {
   --> Candidate candidate
   o String ballotKey
 }
-
 transaction CreateElection{
   o String motion
   o String[] candidateNames
