@@ -8,12 +8,11 @@ query selectElectionByusedballotKey{
   description: "Select an election by specifying a used ballot"
   statement:
       SELECT org.bitpoll.net.Election
-      WHERE (usedballotKey CONTAINS _$usedballotKey)
+        WHERE (usedballotKey CONTAINS _$usedballotKey)
 }
-query selectCandidatesByElection {
-  description: "Select the candidates of an election"
+query selectVotersByInstitution {
+  description: "Select all voters belonging to a specific institution"
   statement: 
-      SELECT org.bitpoll.net.Candidate
-      WHERE (candidateId == _$candidateId)
-
+    SELECT org.bitpoll.net.Voter
+    WHERE (institution == _$institution)
 }

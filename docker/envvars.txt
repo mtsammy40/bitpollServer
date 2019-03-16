@@ -1,0 +1,24 @@
+COMPOSER_CARD=restadmin@bitpoll
+COMPOSER_NAMESPACES=never
+COMPOSER_AUTHENTICATION=true
+COMPOSER_MULTIUSER=true
+COMPOSER_WEBSOCKETS=TRUE
+COMPOSER_PROVIDERS='{
+    "github": {
+    "provider": "github",
+    "module": "passport-github",
+    "clientID": "d51fced01a40c38d65e9",
+    "clientSecret": "a474363f61f1d2c32759802d41d3b71e8cd72325",
+    "authPath": "/auth/github",
+    "callbackURL": "/auth/github/callback",
+    "successRedirect": "http://localhost:3006/",
+    "failureRedirect": "/"
+  }
+}'
+COMPOSER_DATASOURCES='{
+    "db": {
+        "name": "db",
+        "connector": "mongodb",
+        "host": "mongo"
+    }
+}'

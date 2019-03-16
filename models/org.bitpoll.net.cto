@@ -64,6 +64,7 @@ participant Voter identified by id {
   o Boolean valid
   --> Election[] hist optional
   o String email
+  o Institution institution
 }
 asset Election identified by electionId{
   o String electionId
