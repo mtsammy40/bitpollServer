@@ -3,7 +3,7 @@
     "composer": "^0.20.6"
   },
   "name": "bitpoll",
-  "version": "0.1.52",
+  "version": "0.1.55",
   "description": "a voting application",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/bitpoll.bna",
