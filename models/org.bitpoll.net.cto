@@ -64,7 +64,9 @@ participant Voter identified by id {
   o Boolean valid
   --> Election[] hist optional
   o String email
-  o Institution institution
+  --> Institution institution
+  o String dp optional
+  o String phoneNo optional
 }
 asset Election identified by electionId{
   o String electionId
@@ -72,10 +74,13 @@ asset Election identified by electionId{
   o DateTime start
   o DateTime end
   o String[] ballotKey
+  o String[] boothKey
+  o String[] usedboothKey
   o String[] usedballotKey
   o String picture optional
   --> Candidate[] candidates
   --> Admin admin
+  --> Institution institution
 }
 @returns(String)
 transaction Voting {
@@ -90,6 +95,7 @@ transaction CreateElection{
   o Integer ballotNo
   o DateTime start
   o DateTime end
+  --> Institution institution
   --> Admin admin 
 }
 
@@ -110,6 +116,22 @@ transaction CreateRegulator{
   o String name
   o String email
   o String address
+}
+
+transaction RecordVoted{
+  --> Voter voter
+  --> Election election
+}
+@returns(String)
+transaction RecordVotedBooth{
+  --> Voter voter
+  --> Election election
+}
+@returns(String)
+transaction BoothVote{
+  --> Candidate candidate
+  --> Election election
+  o String boothKey 
 }
 
 event NewElection {
